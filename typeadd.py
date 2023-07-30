@@ -3,3 +3,4 @@ sum = input('Enter two number:')
 # digit2 = sum[1]
 # result = int(digit1) + int(digit2)
 result = int(sum[0]) + int(sum[1])
+print(result)
