@@ -7,5 +7,6 @@ tip_with_bill = tip / 100
 per_bill = total_bill_as_float * tip_with_bill
 spl_bill = (total_bill_as_float + per_bill) / s_people
 each_people = round(spl_bill,2)
+each_people = "{:.2f}".format(spl_bill)
 print(f"Each person should pay: $ {each_people}")
 
