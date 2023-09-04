@@ -10,11 +10,20 @@ display = []
 symbol = '_'
 for _ in range(len(chosen_word)):
     display  += '_'
-print(display) 
-
-guess = input("Guess a word:").lower()
-for position in range(len(chosen_word)):
-    letter = chosen_word[position]
-    if letter == guess:
-        display[position] = guess
 print(display)
+
+end_of_game = False
+
+while not end_of_game:
+    guess = input("Guess a word:").lower()
+    # check guessed word
+    for position in range(len(chosen_word)):
+        letter = chosen_word[position]
+        if letter == guess:
+            display[position] = guess
+    print(display)
+
+    if '_' not in display:
+        end_of_game = True
+        print('You win')
+    
