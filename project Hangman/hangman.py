@@ -44,7 +44,9 @@ while not end_of_game:
         lives -= 1
         if lives == 0:
             end_of_game = True
-            print("You lose.")
+            print(f"***********************IT WAS {chosen_word}! YOU LOSE**********************")
+
+
 
     #Join all the elements in the list and turn it into a String.
     print(f"{' '.join(display)}")

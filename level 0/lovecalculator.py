@@ -19,9 +19,9 @@ result = str(true) + str(love)
 # print(type(result))
 int_result = int(result)
 
-if int_result <= 10 and int_result >= 90:
+if int_result <= 10 or int_result >= 90:
   print(f"your score is {result}%, you go together like coke and mentors")
-elif int_result >= 40 and int_result <= 50:
+elif int_result >= 40 or int_result <= 50:
   print(f"your score is {result}%, you are alright together")
 else:
   print(f"your score is {result}")
