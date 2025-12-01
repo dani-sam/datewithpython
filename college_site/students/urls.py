@@ -1,9 +1,13 @@
 # students/urls.py
 from django.urls import path
-from .views import register_student, success_page
+from . import views
 
 urlpatterns = [
-    path("", register_student, name="home"),
-    path("register/", register_student, name="register_student"),
-    path("success/", success_page, name="success_page"),
+    path("", views.register_student, name="register_student"),
+    path("register/", views.register_student, name="register_student"),
+    path(
+        "success/<int:student_id>/",
+        views.registration_success,
+        name="registration_success",
+    ),
 ]

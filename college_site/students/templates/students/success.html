@@ -2,14 +2,46 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registration Successful</title>
 </head>
 
 <body>
-  <h1>Thank you!</h1>
-  <p>Student registered successfully.</p>
+  <h1>Registration Successful!</h1>
+  <p>Your account has been created successfully.</p>
 
-  <a href="/register/">Register another student</a>
+  <h2>Student Details</h2>
+
+  <table border="1" cellpadding="10">
+    <tr>
+      <td><strong>Student ID:</strong></td>
+      <td>{{ student.id }}</td>
+    </tr>
+    <tr>
+      <td><strong>Full Name:</strong></td>
+      <td>{{ student.name }}</td>
+    </tr>
+    <tr>
+      <td><strong>Email Address:</strong></td>
+      <td>{{ student.email }}</td>
+    </tr>
+    <tr>
+      <td><strong>Age:</strong></td>
+      <td>{{ student.age }} years</td>
+    </tr>
+    <tr>
+      <td><strong>Department:</strong></td>
+      <td>{{ student.department }}</td>
+    </tr>
+  </table>
+
+  <br>
+  <p>A confirmation email has been sent to {{ student.email }}</p>
+
+  <br>
+  <a href="{% url 'register_student' %}">Register Another Student</a>
+
 </body>
 
 </html>

@@ -1,23 +1,32 @@
 from django.shortcuts import render, redirect
-
-# Create your views here.
 from .forms import StudentRegistrationForm
+from .models import Student
 
 
 def register_student(request):
-    if request.method == "GET":
-        form = StudentRegistrationForm()
-        return render(request, "students/register.html", {"form": form})
-
-    elif request.method == "POST":
+    if request.method == "POST":
         form = StudentRegistrationForm(request.POST)
-
         if form.is_valid():
-            form.save()  # saves Student to DB
-            return redirect("success_page")
+            # Save the student to database
+            student = form.save()
 
-        return render(request, "students/register.html", {"form": form})
+            # Redirect to success page with student ID
+            return redirect("registration_success", student_id=student.id)
+    else:
+        form = StudentRegistrationForm()
+
+    # Updated template path to match your structure
+    return render(request, "students/register.html", {"form": form})
 
 
-def success_page(request):
-    return render(request, "students/success.html")
+def registration_success(request, student_id):
+    try:
+        # Retrieve the student data from database
+        student = Student.objects.get(id=student_id)
+
+        context = {"student": student}
+
+        # Updated template path to match your structure
+        return render(request, "students/success.html", context)
+    except Student.DoesNotExist:
+        return redirect("register_student")
