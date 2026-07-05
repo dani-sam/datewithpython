@@ -19,3 +19,14 @@ before wiring in real metrics from Lab 01 (Containerlab FRR routers).
 - Confirm Prometheus self-scrape target is UP at localhost:9090/targets
 - Decide: node_exporter (host metrics) vs frr-exporter (routing metrics) first
 - Add Grafana data source pointing to Prometheus
+
+## Session 2 — [05/07/2026]
+
+### What I did
+- Confirmed Prometheus self-scrape target is UP at localhost:9090/targets
+- Verified 1/1 targets healthy, 15s scrape interval working as configured
+
+### Next
+- Add node_exporter to expose host metrics
+- Point Prometheus at node_exporter target
+- Connect Grafana to Prometheus as a data source
