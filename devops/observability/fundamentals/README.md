@@ -14,7 +14,6 @@ metrics, dashboards, and log aggregation.
 
 ## Structure
 ```
-```
 fundamentals/
 ├── docker-compose.yml
 ├── prometheus/
@@ -24,7 +23,6 @@ fundamentals/
 │   └── provisioning/
 ├── NOTES.md
 └── README.md
-```
 ```
 ## How to run
 ```bash
