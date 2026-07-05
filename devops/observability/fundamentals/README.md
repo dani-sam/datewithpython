@@ -13,6 +13,8 @@ metrics, dashboards, and log aggregation.
 - **Promtail** (planned) — log shipping to Loki
 
 ## Structure
+```
+```
 fundamentals/
 ├── docker-compose.yml
 ├── prometheus/
@@ -22,6 +24,8 @@ fundamentals/
 │   └── provisioning/
 ├── NOTES.md
 └── README.md
+```
+```
 ## How to run
 ```bash
 cd observability/fundamentals
