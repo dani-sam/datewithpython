@@ -30,3 +30,17 @@ before wiring in real metrics from Lab 01 (Containerlab FRR routers).
 - Add node_exporter to expose host metrics
 - Point Prometheus at node_exporter target
 - Connect Grafana to Prometheus as a data source
+
+## Session 3 — [05/07/2026]
+
+### What I did
+- Added node-exporter service to docker-compose.yml
+- Fixed prometheus.yml to scrape node-exporter via service name (not host.docker.internal, which only works on Docker Desktop, not Linux)
+- Confirmed both node_exporter and prometheus targets showing 1/1 UP
+
+### What I learned
+- host.docker.internal doesn't resolve on Linux Docker — use the Compose service name instead, since containers share the same network
+
+### Next
+- Connect Grafana to Prometheus as a data source
+- Build first dashboard using node_exporter metrics (CPU, memory, disk)
