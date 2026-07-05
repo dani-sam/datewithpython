@@ -44,3 +44,35 @@ before wiring in real metrics from Lab 01 (Containerlab FRR routers).
 ### Next
 - Connect Grafana to Prometheus as a data source
 - Build first dashboard using node_exporter metrics (CPU, memory, disk)
+
+## Session 4 — [05/07/2026]
+
+### What I did
+- Fixed node-exporter to expose real host metrics by mounting /proc, /sys,
+  and / (as /rootfs) into the container, with matching --path.* flags
+  and a filesystem mount-point exclusion filter
+- Confirmed node_exporter target UP in Prometheus after force-recreate
+- Connected Grafana to Prometheus as a data source (http://prometheus:9090)
+- Built and saved dashboard "Host Metrics — node_exporter" with 3 panels:
+  - CPU Idle Rate: rate(node_cpu_seconds_total{mode="idle"}[5m])
+  - Memory Available: node_memory_MemAvailable_bytes
+  - Disk Usage: node_filesystem_avail_bytes{mountpoint="/"}
+- Exported dashboard JSON to grafana/dashboards/host-metrics.json for
+  version control
+
+### What I learned
+- host.docker.internal doesn't resolve on Linux Docker — use Compose
+  service names instead (containers share the same network)
+- node_exporter needs host /proc, /sys, / mounted in as read-only volumes
+  to report real host metrics; without this it only sees its own
+  container's minimal filesystem
+- Docker Compose volume/command changes require --force-recreate, not
+  just restart, to take effect
+
+### Status
+Phase 2 (Visualization) complete.
+
+### Next
+- Phase 3: Loki + Promtail for log aggregation
+- Ship logs from health_check.py and containers into Loki
+- Correlate a log spike with a metric spike in Grafana Explore
