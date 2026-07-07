@@ -1,0 +1,11 @@
+groups:
+  - name: node_exporter_alerts
+    rules:
+      - alert: NodeExporterDown
+        expr: up{job="node_exporter"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "node_exporter target is down"
+          description: "node_exporter has been unreachable for more than 30 seconds."
