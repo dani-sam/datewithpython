@@ -99,3 +99,32 @@ Phase 3 (Log aggregation) — basic Docker log shipping confirmed working.
 - Try scoping a query to a single container, e.g. {service_name="/prometheus"}
 - Ship logs from health_check.py (Lab 01) into Loki too
 - Move to Phase 4: Alertmanager for actual alert rules
+
+## Session 6 — [07/07/2026]
+
+### What I did
+- Added Alertmanager service to docker-compose.yml
+- Created alertmanager/alertmanager.yml with a minimal default receiver
+- Created prometheus/alert_rules.yml with NodeExporterDown rule
+  (fires if up{job="node_exporter"} == 0 for 30s)
+- Fixed prometheus volume mount to mount the whole prometheus/ folder
+  instead of just prometheus.yml, so alert_rules.yml is visible too
+- Triggered the alert manually by stopping node-exporter — confirmed
+  full pipeline: INACTIVE -> PENDING -> FIRING in Prometheus UI
+- Confirmed alert appeared in Alertmanager UI (localhost:9093)
+
+### What I learned
+- Docker volume mounts are file-specific unless you mount the whole
+  directory — mounting just prometheus.yml hid alert_rules.yml from
+  the container even though it existed on the host
+- Alert states go INACTIVE -> PENDING -> FIRING, with PENDING lasting
+  as long as the `for:` duration in the rule
+
+### Status
+Phase 4 (Alerting) — core alert pipeline confirmed working end-to-end.
+
+### Next
+- Add a second alert rule (e.g. disk space threshold, high CPU sustained)
+- Consider a real notification channel (webhook/email) instead of
+  Alertmanager's default no-op receiver
+- Phase 5: wrap-up docs, final README polish, review full lab
