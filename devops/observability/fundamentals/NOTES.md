@@ -76,3 +76,26 @@ Phase 2 (Visualization) complete.
 - Phase 3: Loki + Promtail for log aggregation
 - Ship logs from health_check.py and containers into Loki
 - Correlate a log spike with a metric spike in Grafana Explore
+
+## Session 5 — [07/07/2026]
+
+### What I did
+- Added Loki + Promtail services to docker-compose.yml
+- Created promtail-config.yml with Docker service discovery
+- Connected Loki as a Grafana data source (http://loki:3100)
+- Confirmed logs flowing via Explore — query {service_name=~".+"}
+  showed 237 log lines from grafana container alone
+
+### What I learned
+- Loki auto-generates a `service_name` label from container names
+  (with leading slash, e.g. "/grafana"), not the custom `container`
+  label from my relabel_configs — use service_name for now
+- Logs volume panel breaks down by level (error/info/warning) automatically
+
+### Status
+Phase 3 (Log aggregation) — basic Docker log shipping confirmed working.
+
+### Next
+- Try scoping a query to a single container, e.g. {service_name="/prometheus"}
+- Ship logs from health_check.py (Lab 01) into Loki too
+- Move to Phase 4: Alertmanager for actual alert rules
