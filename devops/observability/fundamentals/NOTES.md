@@ -128,3 +128,47 @@ Phase 4 (Alerting) — core alert pipeline confirmed working end-to-end.
 - Consider a real notification channel (webhook/email) instead of
   Alertmanager's default no-op receiver
 - Phase 5: wrap-up docs, final README polish, review full lab
+
+## Session 7 — [09/07/2026]
+
+### What I did
+- Rewrote README.md to reflect the full stack as actually built:
+  Prometheus, Grafana, node_exporter, Loki, Promtail, Alertmanager
+- Documented all 4 phases with what each one demonstrates
+- Captured key technical fixes as permanent reference notes (Docker
+  networking, volume mounts, service naming)
+
+### Status
+Phase 5 (Wrap-up) complete.
+
+---
+
+## Lab 03 Summary
+
+Built a complete observability stack from scratch on Docker Compose:
+
+1. **Metrics** — Prometheus + node_exporter, scraping real host CPU/memory/disk
+2. **Visualization** — Grafana dashboard with 3 panels, version-controlled as JSON
+3. **Logs** — Loki + Promtail, auto-discovering and shipping all container logs
+4. **Alerting** — Alertmanager + a rule that fires and resolves correctly,
+   full lifecycle manually verified end-to-end
+
+### Biggest lessons from this lab
+- Docker networking on Linux differs from Docker Desktop conventions
+  (no host.docker.internal) — always use Compose service names
+- node_exporter needs explicit host filesystem mounts to see real system
+  data, not just its own container
+- Config-heavy services (Prometheus) need their whole config directory
+  mounted, not individual files, when multiple config files reference
+  each other
+- The INACTIVE -> PENDING -> FIRING -> INACTIVE alert lifecycle is the
+  core mental model for how Prometheus alerting actually behaves
+
+### Next
+- Observability lab complete as a learning milestone
+- Future direction: either a second observability lab (deeper alerting,
+  more rules, real notification channels) or move toward the next skill
+  area (MLOps/AI integration as a thin layer on top of this stack)
+- College project: revisit "AI-Assisted Observability and Incident
+  Analysis for Containerized Infrastructure" framing, now that the
+  underlying stack actually exists to build on
