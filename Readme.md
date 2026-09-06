@@ -1,17 +1,21 @@
 # void-lab
 
-> A hands-on engineering lab — DevOps, automation, and infrastructure.
-> Built in public. Everything here is real work.
+> A hands-on data engineering lab — learning, research, and real pipelines.
+> Built in public. Everything here is real work, not coursework.
 
 ---
 
 ## About
 
-I'm Dani (voidhyr) — MSc CS student in Kerala, India, targeting DevOps
-and automation engineering. This repo documents my practical work across
-Docker, CI/CD, infrastructure automation, and Python tooling.
+I'm Dani (voidhyr) — MSc CS student in Kerala, India, pivoting into
+**Data Engineering**, with a focus on Data Platform & Reliability
+Engineering (DataOps) and Analytics Engineering. This repo documents
+independent, self-directed learning and research — SQL, Python for data,
+data modeling, orchestration, and data quality — built outside any
+academic curriculum.
 
-Network-aware background. DevOps focus.
+Everything here is self-taught and self-driven. No coursework, no
+assignments — just real pipelines, real bugs, and real fixes.
 
 ---
 
@@ -19,41 +23,35 @@ Network-aware background. DevOps focus.
 
 | Folder | What's inside |
 |---|---|
-| `devops/` | Docker, CI/CD pipelines, infrastructure tooling |
-| `devops/automation/` | Containerlab labs, network automation scripts |
+| `pipelines/` | ETL/ELT pipelines, orchestration DAGs |
+| `sql/` | SQL practice, query patterns, schema design |
+| `python-for-data/` | Pandas/Polars scripts, data wrangling, validation logic |
+| `data-modeling/` | Star schemas, dimensional modeling exercises |
 | `fundamentals/` | Python basics, OOP, DSA, patterns |
-| `projects/` | Standalone Python projects |
-| `networking/` | Network tools — port scanner, monitor |
-| `security/` | Cryptography implementations |
+| `research/` | Notes and write-ups on data engineering concepts and tools |
+| `archive/` | Earlier DevOps/networking work and misc projects, kept for history |
 
 ---
 
-## DevOps Work
+## Current Project — Automated ETL Pipeline with Data Quality Validation
 
-| Lab / Project | Description | Status |
-|---|---|---|
-| containerlab-lab01 | 3-router FRR topology, automated hostname collection via Netmiko, healthcheck script | ✅ Done |
-| docker-fundamentals | Dockerfile, networking, Compose — from scratch | 🔧 In progress |
+My active project (also my MSc Minor Project, but built and understood
+independently of the coursework): an ETL pipeline that pulls weather
+data from the OpenWeatherMap API, validates it with custom Python data
+quality checks, loads it into a PostgreSQL star schema, orchestrates it
+with Apache Airflow, and visualizes it in Looker Studio.
 
----
-
-## Python Projects
-
-| Project | Description | Status |
-|---|---|---|
-| Caesar Cipher | Classic encryption implementation | ✅ Done |
-| Hangman | Terminal game | ✅ Done |
-| Personal Finance Tracker | CLI finance tool | ✅ Done |
-| Port Scanner | TCP port scanner from scratch | 🔧 Building |
-| Network Monitor | Basic network health monitor | 📋 Planned |
+Runs entirely on local infrastructure. Follow-on plans include a
+Medallion architecture, dbt, Docker Compose on a cloud VM, and a
+Streamlit dashboard.
 
 ---
 
 ## Stack
 
-Languages:  Python 3 · Go
-Tools:      Docker · Linux · Git · Containerlab · GitHub Actions
-Target:     DevOps & Automation Engineering
+Languages:  Python 3 · SQL
+Tools:      PostgreSQL · Pandas · Apache Airflow · Git · Looker Studio
+Target:     Data Engineering — DataOps / Analytics Engineering
 
 ---
 
@@ -63,15 +61,17 @@ Target:     DevOps & Automation Engineering
 - No copy-paste without knowing what it does
 - Every project has a README explaining what and why
 - Break things intentionally, then understand why
+- Learning happens here, not in a classroom — this is independent research and practice
 
 ---
 
 ## About
 
-MSc CS | Kerala, India | Targeting DevOps & Automation Engineering
+MSc CS student | Kerala, India | Learning & researching Data Engineering
+independently — targeting a fresher-level Data Engineer role.
 
-Building toward infrastructure automation — CI/CD pipelines, containerized
-environments, and Python tooling for DevOps workflows.
+Building toward reliable, well-tested data pipelines — ETL/ELT design,
+data quality validation, and orchestration.
 
 → [Portfolio](https://voidhyr.github.io/Personal-Website)
 → [Articles](https://dev.to/voidhyr)
@@ -79,4 +79,4 @@ environments, and Python tooling for DevOps workflows.
 
 ---
 
-*Build first. Automate everything.*
+*Learn first. Validate everything.*
